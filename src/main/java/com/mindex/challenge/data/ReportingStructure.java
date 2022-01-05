@@ -7,12 +7,12 @@ public class ReportingStructure {
     private Employee employee;
     private int numberOfReports;
 
-    public ReportingStructure() {
+    public ReportingStructure(){
     }
 
     public ReportingStructure(Employee employee) {
         this.employee = employee;
-        this.numberOfReports = calculateDirectReports(employee);
+        this.numberOfReports = calculateDirectReports(employee,null);
     }
 
     /**
@@ -20,44 +20,26 @@ public class ReportingStructure {
      * @param employee Employee object for which the total number of direct reports will be calculated.
      * @return returns the total number of direct reports for the employee instance.
      */
-    private int calculateDirectReports(Employee employee) {
-        HashSet<String> previouslySeenEmployeeIDs = new HashSet<>();
-        previouslySeenEmployeeIDs.add(employee.getEmployeeId());
+    private int calculateDirectReports(Employee employee, HashSet<String> previouslySeemIDs) {
+
+        if(previouslySeemIDs == null){
+            previouslySeemIDs = new HashSet<>();
+        }
+
+        if(previouslySeemIDs.contains(employee.getEmployeeId())){
+            return 0;
+        }else {
+            previouslySeemIDs.add(employee.getEmployeeId());
+        }
 
         List<Employee> directReports = employee.getDirectReports();
-        if( directReports == null || directReports.isEmpty() ) {
-            return 0;
-        } else {
-            return directReports.size() +
-                    directReports.stream().mapToInt( report -> {
-                        return calculateDirectReports(report, previouslySeenEmployeeIDs);
-                    } ).sum();
-        }
-    }
 
-    /**
-     * Method overload for calculateDirectReports.
-     * Adds HashSet for previously seen IDs in order to prevent infinite recursive loop.
-     * @param employee Employee object for which the total number of direct reports will be calculated.
-     * @param previouslySeenEmployeeIDs HashSet to check against.
-     * @return returns the total number of direct reports for the employee instance.
-     */
-    private int calculateDirectReports(Employee employee, HashSet<String> previouslySeenEmployeeIDs) {
-        if(previouslySeenEmployeeIDs.contains(employee.getEmployeeId())) {
-            return 0;
-        } else {
-            previouslySeenEmployeeIDs.add(employee.getEmployeeId());
-
-            List<Employee> directReports = employee.getDirectReports();
-            if( directReports == null || directReports.isEmpty() ) {
-                return 0;
-            } else {
-                return directReports.size() +
-                        directReports.stream().mapToInt( report -> {
-                            return calculateDirectReports(report, previouslySeenEmployeeIDs);
-                        } ).sum();
-            }
+        if(directReports == null || directReports.isEmpty()){
+            return 1;
         }
+
+        HashSet<String> finalPreviouslySeemIDs = previouslySeemIDs;
+        return directReports.size() + directReports.stream().mapToInt(r -> calculateDirectReports(r, finalPreviouslySeemIDs)).sum();
     }
 
     public void setEmployee(Employee employee) {
