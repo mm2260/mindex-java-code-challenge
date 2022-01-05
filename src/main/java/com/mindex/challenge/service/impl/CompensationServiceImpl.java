@@ -7,7 +7,9 @@ import com.mindex.challenge.service.CompensationService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class CompensationServiceImpl implements CompensationService {
 
     private static final Logger LOG = LoggerFactory.getLogger(ReportingStructureServiceImpl.class);
@@ -26,8 +28,6 @@ public class CompensationServiceImpl implements CompensationService {
 
         return compensation;
     }
-
-
 
     @Override
     public Compensation read(String id) {
