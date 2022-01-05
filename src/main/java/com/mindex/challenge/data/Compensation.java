@@ -12,21 +12,19 @@ public class Compensation {
     private static final Logger LOG = LoggerFactory.getLogger(Compensation.class);
     private static final String DATE_FORMAT = "MM-dd-yyyy";
 
-    @Id
-    private String employeeId;
-
+    private Employee employee;
     private Double salary;
     private Date effectiveDate;
 
     public Compensation() {
     }
 
-    public String getEmployeeId() {
-        return employeeId;
+    public Employee getEmployee() {
+        return employee;
     }
 
-    public void setEmployeeId(String employeeId) {
-        this.employeeId = employeeId;
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
     }
 
     public String getEffectiveDate() {
