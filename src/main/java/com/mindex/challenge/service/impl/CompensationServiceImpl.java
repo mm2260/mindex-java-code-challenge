@@ -1,5 +1,11 @@
 package com.mindex.challenge.service.impl;
 
+/*
+@Author: Mindex
+@Author: Mohammed Mehboob (mm2260@rit.edu)
+ */
+
+
 import com.mindex.challenge.dao.CompensationRepository;
 import com.mindex.challenge.dao.EmployeeRepository;
 import com.mindex.challenge.data.Compensation;

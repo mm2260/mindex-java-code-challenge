@@ -1,8 +1,13 @@
 package com.mindex.challenge.data;
 
+/*
+@Author: Mindex
+@Author: Mohammed Mehboob (mm2260@rit.edu)
+ */
+
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.data.annotation.Id;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

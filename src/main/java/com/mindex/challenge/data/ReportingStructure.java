@@ -1,5 +1,11 @@
 package com.mindex.challenge.data;
 
+/*
+@Author: Mindex
+@Author: Mohammed Mehboob (mm2260@rit.edu)
+ */
+
+
 import java.util.HashSet;
 import java.util.List;
 

@@ -1,5 +1,10 @@
 package com.mindex.challenge.service.impl;
 
+/*
+@Author: Mindex
+@Author: Mohammed Mehboob (mm2260@rit.edu)
+ */
+
 import com.mindex.challenge.data.Employee;
 import com.mindex.challenge.data.ReportingStructure;
 import com.mindex.challenge.service.EmployeeService;
